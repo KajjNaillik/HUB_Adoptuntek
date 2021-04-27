@@ -1,0 +1,64 @@
+version: "3.3"
+
+services:
+
+  adopteuntek-back:
+    tty: true
+    build: ./AdopteUnTek
+    networks:
+      - backend
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    command: python3 manage.py runserver localhost:8000
+    depends_on:
+      - db
+    restart: unless-stopped
+    volumes:
+      - ./AdopteUnTek:/code
+    links:
+      - "redis:redis"
+
+  adopteuntek-front:
+    build: ./FrontUnTek
+    command: npm start
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./FrontUnTek/public:/app/public
+      - ./FrontUnTek/src:/app/src
+
+  db:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=bamboula
+      - MYSQL_DATABASE=AUT_BDD
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=P@ssw0rd
+    volumes:
+      - ./data:/var/lib/mysql/
+    networks:
+      - backend
+    
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    networks:
+      - "backend"
+    
+networks:
+  backend:
+
+volumes:
+  db-data:
+  redisdata:
