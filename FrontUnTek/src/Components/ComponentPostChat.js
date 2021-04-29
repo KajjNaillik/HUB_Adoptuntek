@@ -12,7 +12,7 @@ class PostFormChat extends Component {
             message: "",
             roomName: this.props.name
         };
-        console.log("ctr");
+        //console.log("ctr");
     }
 
     messageChangeHandler = event => {
