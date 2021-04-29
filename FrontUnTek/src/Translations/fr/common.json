@@ -1,0 +1,43 @@
+{
+    "interet": {
+        "title": "Centre d'intéret",
+        "choice": {
+            "ia": "IA",
+            "secu": "Cybersécurité"
+        }
+    },
+    "app": {
+        "swipe": "Pour swiper",
+        "register": "Créer un compte",
+        "login": "Se connecter",
+        "profile": "Profil",
+        "match": "Match",
+        "logout": "Se déconnecter",
+        "prese": "Bienvenu sur AdopteUnTek !"
+    },
+    "matched": {
+        "true": "Vous avez matché"
+    },
+    "postLogin": {
+        "email": "Adresse email:",
+        "password": "Mot de passe:"
+    },
+    "postRegister": {
+        "email": "Adresse email:",
+        "password": "Mot de passe:",
+        "gpa": "GPA:",
+        "campus": "Campus:",
+        "promo": "Promo:",
+        "int_1": "Intérêt 1:",
+        "int_2": "Intérêt 2:",
+        "int_3": "Intérêt 3:"
+    },
+    "postProfile": {
+        "name": "Nom:",
+        "email": "Adresse email:",
+        "gpa": "GPA:",
+        "campus": "Campus:",
+        "promo": "Promo:",
+        "update": "Modifier le profil"
+    }
+}
