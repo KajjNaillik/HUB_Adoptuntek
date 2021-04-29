@@ -125,5 +125,7 @@ class PostFormChat extends Component {
 }
 
 export default PostFormChat;
+//const container = document.getElementById("root");
+//render(<PostFormChat />, container);
 
 //render(<PostFormChat/>,document.getElementById('root'));
