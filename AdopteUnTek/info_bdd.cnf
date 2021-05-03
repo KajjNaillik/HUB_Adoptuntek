@@ -1,0 +1,6 @@
+[client]
+database = AUT_BDD
+host = db
+user = admin
+password = P@ssw0rd
+default-character-set = utf8
