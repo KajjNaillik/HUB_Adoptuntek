@@ -1,0 +1,43 @@
+{
+    "interet": {
+        "title": "Area of interest",
+        "choice": {
+            "ia": "AI",
+            "secu": "Cybersecurity"
+        }
+    },
+    "app": {
+        "swipe": "To swipe",
+        "register": "Register",
+        "login": "Login",
+        "profile": "Profile",
+        "match": "Match",
+        "logout": "Logout",
+        "prese": "Welcome to AdopteUnTek !"
+    },
+    "matched": {
+        "true": "You matched"
+    },
+    "postLogin": {
+        "email": "Email adress:",
+        "password": "Password:"
+    },
+    "postRegister": {
+        "email": "Email adress:",
+        "password": "Password:",
+        "gpa": "GPA:",
+        "campus": "Campus:",
+        "promo": "Promo:",
+        "int_1": "Interest 1:",
+        "int_2": "Interest 2:",
+        "int_3": "Interest 3:"
+    },
+    "postProfile": {
+        "name": "Name:",
+        "email": "Email adress:",
+        "gpa": "GPA:",
+        "campus": "Campus:",
+        "promo": "Promo:",
+        "update": "Update profile"
+    }
+}
