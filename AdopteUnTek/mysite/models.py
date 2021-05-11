@@ -6,6 +6,7 @@
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core import validators
 
 
 class Room(models.Model):
@@ -22,10 +23,12 @@ class Match(models.Model):
 
 
 class User(AbstractUser):
-    _autologin = models.CharField(max_length=200, default=True, null=False)
+    _email = models.EmailField(verbose_name="Email", validators=[validators.validate_email], unique=True)
     _likes = models.ManyToManyField("self", verbose_name="likes")
     _match = models.ManyToManyField(Match, verbose_name="match")
     _interest = models.ManyToManyField(Interest, verbose_name="interest")
+
+    USERNAME_FIELD = '_email'
 
 
 class Message(models.Model):
