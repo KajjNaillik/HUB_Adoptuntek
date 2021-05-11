@@ -1,0 +1,10 @@
+django>=3.1.7
+psycopg2-binary>=2.8
+django-rest-framework
+djangorestframework
+djangorestframework-jwt
+mysqlclient
+PyMySQL
+channels>=3.0.3
+channels_redis
+django-cors-headers

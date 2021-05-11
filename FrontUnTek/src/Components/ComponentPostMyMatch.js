@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import '../Modal/Modal.css';
+import '../Css/Modal.css';
 import Modal from "../Modal/Modal";
-import {I18nextProvider, useTranslation} from "react-i18next";
 import PostFormChat from '../Components/ComponentPostChat';
+import {I18nextProvider, useTranslation} from "react-i18next";
 
 import Redirect from 'react-dom';
 

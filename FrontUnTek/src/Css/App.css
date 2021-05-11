@@ -32,6 +32,7 @@
 }
 
 .img_gif {
+  position: fixed;
   width: 300px;
 }
 
@@ -111,7 +112,7 @@ html {
 }
 
 .img {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -163,4 +164,8 @@ html {
 .matching_list {
   font-size: 1.4rem;
   justify-content: space-between;
+}
+
+.bg_white {
+  background-color: white;
 }
