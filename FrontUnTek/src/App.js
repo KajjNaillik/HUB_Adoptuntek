@@ -21,9 +21,11 @@ import img_p from './ressources/Epitech.svg';
 import logo from './ressources/logo_V2_anim.gif';
 
 let logged_in = localStorage.getItem('token') ? true : false;
+let check = false;
 
 function CheckLoggedIn()
 {
+    check = true;
     fetch('http://localhost:8000/current_user/', {
       headers: {
         Authorization: `JWT ${localStorage.getItem('token')}`
@@ -41,6 +43,7 @@ function CheckLoggedIn()
 function Logout()
 {
   logged_in = false;
+  check = false;
   localStorage.removeItem('token');
   localStorage.removeItem('username');
   window.location.reload(false);
@@ -110,9 +113,14 @@ function App() {
           <div className="header-right">
             <button className="button flag"><img className="image_flag" src={flag_fr} alt="a" onClick={() => i18n.changeLanguage('fr')}></img></button>
             <button className="button flag"><img className="image_flag" src={flag_en} alt="a" onClick={() => i18n.changeLanguage('en')}></img></button>
+          { check === false ? 
+            <>
+              {CheckLoggedIn()} 
+            </>
+            : null
+          }
           { logged_in === false ?
               <>
-                {CheckLoggedIn()}
                 <button className="button hover" onClick={toggleLoginForm}>{t("app.login")}</button>
                 <button className="button hover" onClick={toggleRegistrationForm}>{t("app.register")}</button>
               </>
@@ -133,14 +141,12 @@ function App() {
           hide={toggleLoginForm}
           title={t("app.login")}>
         <PostFormLoginTranslate />
-        {CheckLoggedIn()}
       </Modal>
       <Modal
             isShowing={isRegistrationFormShowed}
             hide={toggleRegistrationForm}
             title={t("app.register")}>
         <PostFormRegisterTranslate />
-        {CheckLoggedIn()}
       </Modal>
       <Modal
           isShowing={isProfileFormShowed}
