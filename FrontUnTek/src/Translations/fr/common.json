@@ -13,7 +13,8 @@
         "profile": "Profil",
         "match": "Match",
         "logout": "Se déconnecter",
-        "prese": "Bienvenu sur AdopteUnTek !"
+        "prese": "Bienvenu sur AdopteUnTek !",
+        "chat": "Messagerie"
     },
     "matched": {
         "true": "Vous avez matché"
@@ -31,6 +32,10 @@
         "int_1": "Intérêt 1:",
         "int_2": "Intérêt 2:",
         "int_3": "Intérêt 3:"
+    },
+    "chat": {
+        "chat": "Messagerie",
+        "send": "Envoyer"
     },
     "postProfile": {
         "name": "Nom:",

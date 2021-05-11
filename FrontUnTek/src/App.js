@@ -12,6 +12,7 @@ import PostFormSettings from './Components/ComponentPostSettings';
 import PostFormLoginTranslate from './Components/ComponentPostLogin';
 import PostFormProfileTranslate from './Components/ComponentPostProfile';
 import PostFormRegisterTranslate from './Components/ComponentPostRegister';
+import PostFormChat from './Components/ComponentPostChat';
 /* Import Translation */
 import {useTranslation} from "react-i18next";
 /* Import Ressources */
@@ -87,6 +88,10 @@ function App() {
     isShowing: isMyMatchFormShowed,
     toggle: toggleMyMatch
   } = UseModal();
+  const {
+    isShowing: isChat,
+    toggle: toggleChat
+  } = UseModal();
 
   const [
     offsetY,
@@ -115,6 +120,7 @@ function App() {
                 {CheckLoggedIn()}
                 <button className="button hover" onClick={toggleLoginForm}>{t("app.login")}</button>
                 <button className="button hover" onClick={toggleRegistrationForm}>{t("app.register")}</button>
+                <button className="button hover" onClick={toggleChat}>{t("app.chat")}</button>
               </>
             : null }
           { logged_in === true ?
@@ -165,6 +171,12 @@ function App() {
             hide={toggleMyMatch}
             title="My Match">
         <PostFormMyMatch />
+      </Modal>
+      <Modal
+            isShowing={isChat}
+            hide={toggleChat}
+            title={t("app.chat")}>
+        <PostFormChat />
       </Modal>
       {/* ------------------------------------------------------------------- */}
       <section className="parallax">

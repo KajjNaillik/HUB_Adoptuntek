@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+/* Import Translation */
+import {withTranslation} from "react-i18next";
 
 class PostFormChat extends Component {
     constructor(props) {
@@ -10,7 +12,6 @@ class PostFormChat extends Component {
             message: "",
             roomName: this.props.name
         };
-        //console.log("ctr");
     }
 
     messageChangeHandler = event => {
@@ -52,13 +53,13 @@ class PostFormChat extends Component {
             }
             //this.setState({messages: updated_messages});
     
-            //if (data.command == "new_message") {
-            //document.querySelector('#chat-log').value += (data.message.author + ": " + data.message.content + '\n');
-            //} else if (data.command == "messages") {
-                //for (let message of data.messages) {
-                    //document.querySelector('#chat-log').value += (message.author + ": " + message.content + '\n');
-                //}
-            //}
+            /*if (data.command == "new_message") {
+            document.querySelector('#chat-log').value += (data.message.author + ": " + data.message.content + '\n');
+            } else if (data.command == "messages") {
+                for (let message of data.messages) {
+                    document.querySelector('#chat-log').value += (message.author + ": " + message.content + '\n');
+                }
+            }*/
         }
         chatSocket.onclose = (e) => {
             console.error('Chat socket closed unexpectedly');
@@ -72,6 +73,15 @@ class PostFormChat extends Component {
         document.querySelector('#chat-message-submit').onclick = (e) => {
             var messageInputDom = document.querySelector('#chat-message-input');
             var message = messageInputDom.value;
+            console.log(JSON.stringify({
+                'message': message,
+                'command': 'new_message',
+                'from': 'Anonymous',
+                'room_id':  this.state.roomName
+            }));
+            document.querySelector('#chat-log').value += ("Me" + ": " + message + '\n');
+
+
             chatSocket.send(JSON.stringify({
                 'message': message,
                 'command': 'new_message',
@@ -80,31 +90,10 @@ class PostFormChat extends Component {
             }));
             messageInputDom.value = '';
 	    };
-    }
-/*
+    };
+
     render() {
-        return (
-          <div id="sidepanel">
-            <div id="profile">
-                <p>UserName</p>
-            </div>
-            <div className="message-input">
-            <textarea id="chat-log" cols="65" rows="20"></textarea>
-            <br />
-            <input
-                id="chat-message-input"
-                type="text"
-                size="40"
-                placeholder="Write your message.."
-            />
-            <input id="chat-message-submit" type="button" value="Send" onClick={this.submitMessage}>
-            </input>
-            </div>
-        </div>        
-        )
-    }
-    */
-    render() {
+        const { t } = this.props;
         return (
             <div>      
                 {this.state.messages.map(function(item, i){
@@ -114,16 +103,12 @@ class PostFormChat extends Component {
                         </div>
                     ;}
                 )}
-            <textarea id="chat-log" type="text" cols="65" rows="20" onChange={this.messageChangeHandler} value={this.state.message}/><br />
-            <input id="chat-message-input" type="text" size="45"/>
-            <input id="chat-message-submit" type="button" className="button" value="Send" />
+                <textarea disabled id="chat-log" type="text" cols="65" rows="20" onChange={this.messageChangeHandler} value={this.state.message}/><br/>
+                <input id="chat-message-input" type="text" size="40"/>
+                <input id="chat-message-submit" type="button" className="button" value={t("chat.send")} />
             </div>
         );
     }
 }
-
-export default PostFormChat;
-//const container = document.getElementById("root");
-//render(<PostFormChat />, container);
-
-//render(<PostFormChat/>,document.getElementById('root'));
+const PostFormChatTranslate = withTranslation('common')(PostFormChat)
+export default PostFormChatTranslate;
