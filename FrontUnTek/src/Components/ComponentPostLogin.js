@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../Modal/Modal.css';
 import {withTranslation} from "react-i18next";
+import '../Css/Modal.css';
 
 class PostFormLogin extends Component {
     constructor(props) {

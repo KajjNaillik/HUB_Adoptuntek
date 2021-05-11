@@ -1,8 +1,10 @@
 import React, { Component, Suspense } from 'react';
 import { withTranslation } from 'react-i18next';
-import '../Modal/Modal.css';
-import './swip.css';
-import logo from '../logo_V2_anim.gif';
+/* Import CSS */
+import '../Css/Modal.css';
+import '../Css/swip.css';
+/* Import Ressources */
+import logo from '../ressources/logo_V2_anim.gif';
 import checkmark from '../ressources/checkmark.png';
 import cross from '../ressources/cross.png';
 
@@ -53,7 +55,7 @@ class SwipingPage extends Component {
         this.state.profiles.shift();
         this.state.match = body.match;
         console.log(this.state.profiles);
-        if (this.state.match == true)
+        if (this.state.match === true)
             alert('Match :)');
         this.forceUpdate();
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../Modal/Modal.css';
+import '../Css/Modal.css';
 import {withTranslation} from "react-i18next";
 
 class PostFormRegister extends Component {

@@ -1,21 +1,24 @@
-import logo from './logo_V2_anim.gif';
 import React, { Suspense } from "react";
-import UseModal from "./Modal/UseModal";
-import Modal from "./Modal/Modal";
-import img_p from './Epitech.svg';
 import { useEffect, useState } from "react"
-import './App.css';
-// import Component from "./ComponentGet";
-import PostFormRegisterTranslate from './Components/ComponentPostRegister';
-import PostFormLoginTranslate from './Components/ComponentPostLogin';
-import PostFormSettings from './Components/ComponentPostSettings';
+/* Import Css */
+import './Css/App.css';
+/* Import Modal */
+import Modal from "./Modal/Modal";
+import UseModal from "./Modal/UseModal";
+/* Import Components */
+import SwipingTranslate from './Components/ComponentSwiping'
 import PostFormMyMatch from './Components/ComponentPostMyMatch';
-//import { useTranslation } from 'react-i18next'
+import PostFormSettings from './Components/ComponentPostSettings';
+import PostFormLoginTranslate from './Components/ComponentPostLogin';
 import PostFormProfileTranslate from './Components/ComponentPostProfile';
-import SwipingTranslate from './pages/swiping'
-import {I18nextProvider, useTranslation} from "react-i18next";
-import flag_fr from './flag_fr.png';
-import flag_en from './flag_en.png';
+import PostFormRegisterTranslate from './Components/ComponentPostRegister';
+/* Import Translation */
+import {useTranslation} from "react-i18next";
+/* Import Ressources */
+import flag_fr from './ressources/flag_fr.png';
+import flag_en from './ressources/flag_en.png';
+import img_p from './ressources/Epitech.svg';
+import logo from './ressources/logo_V2_anim.gif';
 
 let logged_in = localStorage.getItem('token') ? true : false;
 
@@ -58,6 +61,7 @@ const Looker = () => (
       return (null);
   })
 )
+
 function App() {
   const {
     isShowing: isLoginFormShowed,
@@ -85,19 +89,18 @@ function App() {
   } = UseModal();
 
   const [
-    offset,
-    setOffset
+    offsetY,
+    setOffsetY
   ] = useState(0)
 
+  const handleScroll = () => setOffsetY(window.pageYOffset);
+
   useEffect(() => {
-    function handleScroll() {
-      setOffset(window.pageYOffset)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const [t, i18n] = useTranslation('common');
   return (
     <Suspense fallback="loading">
@@ -165,21 +168,21 @@ function App() {
       </Modal>
       {/* ------------------------------------------------------------------- */}
       <section className="parallax">
-        <img
+        <img 
           src={img_p}
-          alt="test"
+          alt=""
           className="img"
-          style={{
-            transform: `translateY(${offset * 0.4}px)`,
-          }}
+          style={{ transform: `translateY(-${offsetY * 0.5}px)` }}
         />
-        </section>
+      </section>
+      <section className="overflow bg_white">
         <div className="logo_gif">
-          <img className="img_gif" src={logo}></img>
+          <img src={logo} />
         </div>
         <div className="prese">
           <h1>{t("app.prese")}</h1>
         </div>
+      </section>
       <section className="overflow" />
     </div>
     </Suspense>

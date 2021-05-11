@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { render } from "react-dom";
-import moment from "moment"
 
 class PostFormChat extends Component {
     constructor(props) {
@@ -38,12 +36,12 @@ class PostFormChat extends Component {
             //var data = JSON.parse(e.data);
             //this.addMessage(data)
             var data = JSON.parse(e.data);
-            if (data.command == "messages") {
+            if (data.command === "messages") {
                 for (let msg of data.messages.reverse()) {
                     this.setState({ message: this.state.message + '\n' + msg.author + ': ' + msg.content });   
                 }
             }
-            else if (data.command == "new_message") {
+            else if (data.command === "new_message") {
                 //var message = {text: data.content, date: data.utc_time};
                 //message.date = moment(message.date).local().format('YYYY-MM-DD HH:mm:ss');
 
