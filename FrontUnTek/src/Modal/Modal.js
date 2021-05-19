@@ -17,7 +17,7 @@ const Modal = ({ isShowing, hide, title, ...props }) =>
                   className="modal-close-button"
                   onClick={hide}
                 >
-                  <span>&times;</span>
+                <span>&times;</span>
                 </button>
               </div>
               <div className="modal-body">{props.children}</div>

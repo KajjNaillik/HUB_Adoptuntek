@@ -23,26 +23,27 @@ class PostFormRegister extends Component {
     handleValidation(){
       let errors = {};
       let formIsValid = true;
+      const {t} = this.props
 
       if(!this.state._email){
         formIsValid = false;
-        errors["_email"] = "Cannot be empty";
+        errors["_email"] = t("register.empty");
       }
       if(!this.state.password){
         formIsValid = false;
-        errors["password"] = "Cannot be empty";
+        errors["password"] = t("register.empty");
       }
       if(!this.state._gpa){
         formIsValid = false;
-        errors["_gpa"] = "Cannot be empty";
+        errors["_gpa"] = t("register.empty");
       }
       if(!this.state._campus){
         formIsValid = false;
-        errors["_campus"] = "Cannot be empty";
+        errors["_campus"] = t("register.empty");
       }
       if(!this.state._promo){
         formIsValid = false;
-        errors["_promo"] = "Cannot be empty";
+        errors["_promo"] = t("register.empty");
       }
 
       this.setState({errors: errors});
@@ -115,16 +116,16 @@ class PostFormRegister extends Component {
           <form onSubmit={this.submitHandler}>
             <div className="modal-body">
               <ul>
-                <h3>{t("postRegister.email")}</h3>
-                <input className="modal-maturity-label modal-focus" type="text" placeholder={t("postLogin.email")} name="_email" value={_email} onChange={this.changeHandler}/>
+                <h3>{t("register.email")}</h3>
+                <input className="modal-maturity-label modal-focus" type="text" placeholder={t("login.email")} name="_email" value={_email} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["_email"]}</span>
-                <h3>{t("postRegister.password")}</h3>
-                <input className="modal-maturity-label modal-focus" type="password" placeholder={t("postLogin.password")} name="password" value={password} onChange={this.changeHandler}/>
+                <h3>{t("register.password")}</h3>
+                <input className="modal-maturity-label modal-focus" type="password" placeholder={t("login.password")} name="password" value={password} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["password"]}</span>
-                <h3>{t("postRegister.gpa")}</h3>
+                <h3>{t("register.gpa")}</h3>
                 <input className="modal-maturity-label modal-focus" type="number" step="0.01" min="0" max="4" placeholder="GPA" name="_gpa" value={_gpa} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["_gpa"]}</span>
-                <h3>{t("postRegister.campus")}</h3>
+                <h3>{t("register.campus")}</h3>
                 <select name="_campus" value={_campus} onChange={this.changeHandler}>
                   <option value=""></option>
                   <option value="Rennes">Rennes</option>
@@ -132,9 +133,9 @@ class PostFormRegister extends Component {
                   <option value="Toulouse">Toulouse</option>
                   <option value="Lille">Lille</option>
                   <option value="Bordeaux">Bordeaux</option>
-                </select>
+                </select><br />
                 <span style={{color: "red"}}>{this.state.errors["_campus"]}</span>
-                <h3>{t("postRegister.promo")}</h3>
+                <h3>{t("register.promo")}</h3>
                 <select name="_promo" value={_promo} onChange={this.changeHandler}>
                   <option value=""></option>
                   <option value="2025">2025</option>
@@ -142,9 +143,9 @@ class PostFormRegister extends Component {
                   <option value="2023">2023</option>
                   <option value="2022">2022</option>
                   <option value="2021">2021</option>
-                </select>
+                </select><br />
                 <span style={{color: "red"}}>{this.state.errors["_promo"]}</span>
-                <h3>{t("postRegister.int_1")}</h3>
+                <h3>{t("register.int_1")}</h3>
                 <select name="_it_1" value={_it_1} onChange={this.changeHandler}>
                   <option value=""></option>
                   <option value={t("interet.choice.ia")}>{t("interet.choice.ia")}</option>
@@ -153,7 +154,7 @@ class PostFormRegister extends Component {
                   <option value="Hardware">Hardware</option>
                   <option value="Software">Software</option>
                 </select>
-                <h3>{t("postRegister.int_2")}</h3>
+                <h3>{t("register.int_2")}</h3>
                 <select name="_it_2" value={_it_2} onChange={this.changeHandler}>
                   <option value=""></option>
                   <option value={t("interet.choice.ia")}>{t("interet.choice.ia")}</option>
@@ -162,7 +163,7 @@ class PostFormRegister extends Component {
                   <option value="Hardware">Hardware</option>
                   <option value="Software">Software</option>
                 </select>
-                <h3>{t("postRegister.int_3")}</h3>
+                <h3>{t("register.int_3")}</h3>
                 <select name="_it_3" value={_it_3} onChange={this.changeHandler}>
                   <option value=""></option>
                   <option value={t("interet.choice.ia")}>{t("interet.choice.ia")}</option>

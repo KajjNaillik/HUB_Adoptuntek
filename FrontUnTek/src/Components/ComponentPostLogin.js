@@ -10,21 +10,23 @@ class PostFormLogin extends Component {
           _email: '',
           password: '',
           logged_in: localStorage.getItem('token') ? true : false,
-          errors: {}
+          errors: {},
+          translate: null
         }
     }
 
     handleValidation(){
       let errors = {};
       let formIsValid = true;
+      const {t} = this.props
 
       if(!this.state._email){
         formIsValid = false;
-        errors["_email"] = "Cannot be empty";
+        errors["_email"] = t("login.empty");
       }
       if(!this.state.password){
         formIsValid = false;
-        errors["password"] = "Cannot be empty";
+        errors["password"] = t("login.empty");
       }
       this.setState({errors: errors});
       return formIsValid;
@@ -46,7 +48,6 @@ class PostFormLogin extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    console.log(this.state);
     if(!this.handleValidation()) {
       return;
     }
@@ -93,11 +94,11 @@ class PostFormLogin extends Component {
           <form onSubmit={this.submitHandler}>
             <div className="modal-body">
               <ul>
-                <h3>{t("postLogin.email")}</h3>
-                <input className="modal-maturity-label modal-focus" type="text" placeholder={t("postLogin.email")} name="_email" value={_email} onChange={this.changeHandler}/>
+                <h3>{t("login.email")}</h3>
+                <input className="modal-maturity-label modal-focus" type="text" placeholder={t("login.email")} name="_email" value={_email} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["_email"]}</span>
-                <h3>{t("postLogin.password")}</h3>
-                <input className="modal-maturity-label modal-focus" type="password" placeholder={t("postLogin.password")} name="password" value={password} onChange={this.changeHandler}/>
+                <h3>{t("login.password")}</h3>
+                <input className="modal-maturity-label modal-focus" type="password" placeholder={t("login.password")} name="password" value={password} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["password"]}</span>
               </ul>
             </div>

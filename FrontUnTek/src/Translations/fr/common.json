@@ -12,18 +12,23 @@
         "login": "Se connecter",
         "profile": "Profil",
         "match": "Match",
+        "myMatch": "Mes match",
         "logout": "Se déconnecter",
-        "prese": "Bienvenu sur AdopteUnTek !",
+        "welcome": "Bienvenu sur AdopteUnTek !",
         "chat": "Messagerie"
     },
     "matched": {
         "true": "Vous avez matché"
     },
-    "postLogin": {
-        "email": "Adresse email:",
-        "password": "Mot de passe:"
+    "myMatch": {
+        "empty": "Vous n'avez pas de Matche"
     },
-    "postRegister": {
+    "login": {
+        "email": "Adresse email:",
+        "password": "Mot de passe:",
+        "empty": "Ne peut être vide."
+    },
+    "register": {
         "email": "Adresse email:",
         "password": "Mot de passe:",
         "gpa": "GPA:",
@@ -31,13 +36,14 @@
         "promo": "Promo:",
         "int_1": "Intérêt 1:",
         "int_2": "Intérêt 2:",
-        "int_3": "Intérêt 3:"
+        "int_3": "Intérêt 3:",
+        "empty": "Ne peut être vide."
     },
     "chat": {
         "chat": "Messagerie",
         "send": "Envoyer"
     },
-    "postProfile": {
+    "profile": {
         "name": "Nom:",
         "email": "Adresse email:",
         "gpa": "GPA:",

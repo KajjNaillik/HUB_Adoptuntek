@@ -77,15 +77,15 @@ class PostFormProfile extends Component {
             <form onSubmit={this.submitHandler}>
                 <div className="modal-body">
                     <ul>
-                        <h3>{t("postProfile.name")}</h3>
+                        <h3>{t("profile.name")}</h3>
                         <input className="modal-maturity-label modal-focus" type="text" placeholder={this.state._name} name="_name" value={_name} onChange={this.changeHandler}/>
-                        <h3>{t("postProfile.email")}</h3>
+                        <h3>{t("profile.email")}</h3>
                         <input className="modal-maturity-label modal-focus" type="text" placeholder={this.state._email} name="_email" value={_email} onChange={this.changeHandler}/>
-                        <h3>{t("postProfile.gpa")}</h3>
+                        <h3>{t("profile.gpa")}</h3>
                         <input className="modal-maturity-label modal-focus" type="text" placeholder={this.state._gpa} name="_gpa" value={_gpa} onChange={this.changeHandler}/>
-                        <h3>{t("postProfile.campus")}</h3>
+                        <h3>{t("profile.campus")}</h3>
                         <input className="modal-maturity-label modal-focus" type="text" placeholder={this.state._campus} name="_campus" value={_campus} onChange={this.changeHandler}/>
-                        <h3>{t("postProfile.promo")}</h3>
+                        <h3>{t("profile.promo")}</h3>
                         <input className="modal-maturity-label modal-focus" type="text" placeholder={this.state._promo} name="_promo" value={_promo} onChange={this.changeHandler}/>
                     </ul>
                 </div>

@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
+/* Import Css */
 import '../Css/Modal.css';
+/* Import Modal */
 import Modal from "../Modal/Modal";
+import UseModal from "../Modal/UseModal";
+/* Import Components */
 import PostFormChat from '../Components/ComponentPostChat';
-import {I18nextProvider, useTranslation} from "react-i18next";
-
-import Redirect from 'react-dom';
+/* Import Translation */
+import { withTranslation } from 'react-i18next';
 
 class PostFormMyMatch extends Component {
   constructor(props) {
     super(props)
-    this.changeHandler = this.changeHandler.bind(this);
+    //this.changeHandler = this.changeHandler.bind(this);
     this.state = {
       names: [],
-      in: false
+      in: false,
+      errors: {},
+    }
+    this.UseModal = {
+      isShowing: false,
+      toggle: {}
     }
   }
   
@@ -28,25 +36,35 @@ class PostFormMyMatch extends Component {
       }).catch(err => console.log('Fetch error :', err));
   }
 
-  changeHandler = (e) => {
-    // return (<Modal
-    //   isShowing={isRegistrationFormShowed}
-    //   hide={toggleRegistrationForm}
-    //   title={t("app.register")}>
-    // </Modal>)
+  changeHandler() {
+    const { t } = this.props;
+    return (
+      <Modal
+      isShowing={this.UseModal.isShowing}
+      hide={this.UseModal.toggle}
+      title={t("app.chat")}>
+      <PostFormChat />
+    </Modal>)
   }
 
   render() {
-    // const [t, i18n] = useTranslation('common');
-    var renderedOutput = this.state.names.map(item => <button class="button hover" onClick={this.changeHandler}> {item} </button>);
-    //var renderedOutput = this.state.names.map(item => <Link to={this.changeHandler.bind(item)} target="_blank" rel="noopener noreferrer" />);
-    //var renderedOutput = this.state.names.map(item => <button className="button hover" onClick={this.changeHandler}>{item}</button>);
-    return (
-      <div>
-        {renderedOutput}
+    var renderedOutput = this.state.names.map(item => <button class="button hover" onClick={this.changeHandler}> { item } </button>);
+    //var renderedOutput = <button class="button hover" onClick={this.changeHandler}>salut</button>;
+    let returnMyMatch = false;
+    const { t } = this.props;
+    if (this.state.names.map !== undefined) {
+      returnMyMatch =
+      <div className="modal-body">
+        <h3>{t('myMatch.empty')}</h3>
       </div>
-    )
+    } else {
+      returnMyMatch =
+        <div className="modal-body">
+          {renderedOutput}
+        </div>
+    }
+    return (returnMyMatch);
   }
 }
-
-export default PostFormMyMatch
+const PostFormMyMatchTranslate = withTranslation('common')(PostFormMyMatch)
+export default PostFormMyMatchTranslate

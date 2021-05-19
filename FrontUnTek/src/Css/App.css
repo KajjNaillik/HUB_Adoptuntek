@@ -23,11 +23,10 @@
 }
 
 .prese {
-  text-align: center;
   font-size: 30px;
 }
 
-.logo_gif {
+.center {
   text-align: center;
 }
 
@@ -42,10 +41,7 @@
 
 .flag {
   width: 50px;
-}
-
-.image_flag {
-  width: 100%;
+  
 }
 
 .button {

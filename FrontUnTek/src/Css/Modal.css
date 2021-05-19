@@ -8,6 +8,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.center {
+  text-align: center;
+}
+
 .modal-wrapper {
   position: fixed;
   top: 0;

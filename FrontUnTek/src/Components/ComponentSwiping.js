@@ -15,7 +15,6 @@ class SwipingPage extends Component {
         this.state = {
             profiles: {},
             match: false,
-            render: false,
             pos: 0,
             max_length: 0
         };
@@ -24,30 +23,27 @@ class SwipingPage extends Component {
 
     componentDidMount() {
         fetch('http://localhost:8000/profiling/', {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem('token')}`
-        }
-      })
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`
+            }
+        })
         .then(res => res.json())
         .then(json => {
             this.setState({ profiles: json});
         });
-        setTimeout(function() {
-            this.setState({render: true})
-        }.bind(this), 1300)
     }
 
     handleAccept = async (profile) => {
         this.state.match = false;
         const result = await fetch('http://localhost:8000/profiling/', {
-          method: 'POST',
-          headers: {
-            Authorization: `JWT ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify ({
-            "email": profile.email
-          })
+            method: 'POST',
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify ({
+                "email": profile.email
+            })
         });
         const body = await result.json();
         const tmp = this.state.profiles[0];
@@ -71,7 +67,7 @@ class SwipingPage extends Component {
         const {profiles, pos} = this.state
         const { t } = this.props;
         let renderContainer = false;
-        if (this.state.render) {
+        if (profiles[pos] !== undefined) {
             renderContainer = <from>
                 <div className="modal-body">
                     <ul>

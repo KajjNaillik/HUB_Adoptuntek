@@ -116,8 +116,8 @@ function App() {
         <header className="header">
         <button className="logo">AdopteUnTek</button>
           <div className="header-right">
-            <button className="button flag"><img className="image_flag" src={flag_fr} alt="a" onClick={() => i18n.changeLanguage('fr')}></img></button>
-            <button className="button flag"><img className="image_flag" src={flag_en} alt="a" onClick={() => i18n.changeLanguage('en')}></img></button>
+            <button className="button flag"><img style={{width: "100%"}} src={flag_fr} onClick={() => i18n.changeLanguage('fr')}></img></button>
+            <button className="button flag"><img style={{width: "100%"}} src={flag_en} onClick={() => i18n.changeLanguage('en')}></img></button>
           { check === false ? 
             <>
               {CheckLoggedIn()} 
@@ -128,6 +128,8 @@ function App() {
               <>
                 <button className="button hover" onClick={toggleLoginForm}>{t("app.login")}</button>
                 <button className="button hover" onClick={toggleRegistrationForm}>{t("app.register")}</button>
+                <button className="button hover" onClick={toggleMyMatch}>{t("app.myMatch")}</button>
+                <button className="button hover" onClick={toggleSwiping}>{t("app.match")}</button>
                 <button className="button hover" onClick={toggleChat}>{t("app.chat")}</button>
               </>
             : null }
@@ -135,74 +137,73 @@ function App() {
             <>
               <button className="button hover" onClick={toggleProfileForm}>{t("app.profile")}</button>
               <button className="button hover" onClick={toggleSwiping}>{t("app.match")}</button>
-              <button className="button hover" onClick={toggleMyMatch}>My Match</button>
+              <button className="button hover" onClick={toggleMyMatch}>{t("app.myMatch")}</button>
               <button className="button hover" onClick={Logout}>{t("app.logout")}</button>
             </>
             : null }
           </div>
         </header>
-      {/* ------------------------------------------------------------------- */}
-      <Modal
+        {/* ------------------------------------------------------------------- */}
+        <Modal
           isShowing={isLoginFormShowed}
           hide={toggleLoginForm}
           title={t("app.login")}>
-        <PostFormLoginTranslate />
-      </Modal>
-      <Modal
-            isShowing={isRegistrationFormShowed}
-            hide={toggleRegistrationForm}
-            title={t("app.register")}>
-        <PostFormRegisterTranslate />
-      </Modal>
-      <Modal
+          <PostFormLoginTranslate />
+        </Modal>
+        <Modal
+          isShowing={isRegistrationFormShowed}
+          hide={toggleRegistrationForm}
+          title={t("app.register")}>
+          <PostFormRegisterTranslate />
+        </Modal>
+        <Modal
           isShowing={isProfileFormShowed}
           hide={toggleProfileForm}
           title={t("app.profile")}>
           <PostFormProfileTranslate/>
-      </Modal>
-      <Modal
-            isShowing={isSettingsFormShowed}
-            hide={toggleSettingsForm}
-            title="Settings">
-        <PostFormSettings />
-      </Modal>
-      <Modal
+        </Modal>
+        <Modal
+          isShowing={isSettingsFormShowed}
+          hide={toggleSettingsForm}
+          title="Settings">
+          <PostFormSettings />
+        </Modal>
+        <Modal
           isShowing={isSwipingShowed}
           hide={toggleSwiping}
           title="Match">
-        <SwipingTranslate/>
-      </Modal>
-      <Modal
-            isShowing={isMyMatchFormShowed}
-            hide={toggleMyMatch}
-            title="My Match">
-        <PostFormMyMatch />
-      </Modal>
-      <Modal
-            isShowing={isChat}
-            hide={toggleChat}
-            title={t("app.chat")}>
-        <PostFormChat />
-      </Modal>
-      {/* ------------------------------------------------------------------- */}
-      <section className="parallax">
-        <img 
-          src={img_p}
-          alt=""
-          className="img"
-          style={{ transform: `translateY(-${offsetY * 0.5}px)` }}
-        />
-      </section>
-      <section className="overflow bg_white">
-        <div className="logo_gif">
-          <img src={logo} />
-        </div>
-        <div className="prese">
-          <h1>{t("app.prese")}</h1>
-        </div>
-      </section>
-      <section className="overflow" />
-    </div>
+          <SwipingTranslate/>
+        </Modal>
+        <Modal
+          isShowing={isMyMatchFormShowed}
+          hide={toggleMyMatch}
+          title={t("app.myMatch")}>
+          <PostFormMyMatch />
+        </Modal>
+        <Modal
+          isShowing={isChat}
+          hide={toggleChat}
+          title={t("app.chat")}>
+          <PostFormChat />
+        </Modal>
+        {/* ------------------------------------------------------------------- */}
+        <section className="parallax">
+          <img 
+            src={img_p}
+            alt=""
+            className="img"
+            style={{ transform: `translateY(-${offsetY * 0.45}px)` }}
+          />
+        </section>
+        <section className="overflow bg_white">
+          <div className="center">
+            <img src={logo} />
+          </div>
+          <div className="center prese">
+            <h1>{t("app.welcome")}</h1>
+          </div>
+        </section>
+      </div>
     </Suspense>
   );
 }
