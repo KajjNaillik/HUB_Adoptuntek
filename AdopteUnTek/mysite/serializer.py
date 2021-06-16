@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from .models import *
+from .intra_API_request import is_link_valid
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,7 +17,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserSerializerWithToken(serializers.ModelSerializer):
     token = serializers.SerializerMethodField()
-    #password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True)
+    _link = serializers.CharField(write_only=True)
 
     def get_token(self, obj):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -27,10 +29,21 @@ class UserSerializerWithToken(serializers.ModelSerializer):
         return token
 
     def create(self, validated_data):
-        #password = validated_data.pop('password', None)
+        print(validated_data)
+        link = validated_data.get('_link')
+        if not link:
+            print("FAILED TO GET LINK")
+            return
+        response = is_link_valid(link)
+        password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
-        #if password is not None:
-            #instance.set_password(password)
+        instance._email = response["login"]
+        instance._gpa = response["gpa"][0]["gpa"]
+        instance._name = response["firstname"]
+        instance._campus = response["groups"][0]["title"]
+        instance._promo = response["promo"]
+        if password is not None:
+            instance.set_password(password)
         instance.save()
         return instance
 
@@ -43,4 +56,4 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('_autologin', "token")
+        fields = ('_link', '_email', "token", "password", "_gpa", "_name", "_campus", "_promo")

@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -134,6 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 EXTRA_URL = '/templatetags/'
+AUTH_USER_MODEL = 'mysite.User'
 STATIC_ROOT = 'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 JWT_AUTH = {'JWT_RESPONSE_PAYLOAD_HANDLER': 'mysite.utils.my_jwt_response_handler'}
 SITE_ID = 1

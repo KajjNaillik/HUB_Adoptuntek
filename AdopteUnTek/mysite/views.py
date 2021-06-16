@@ -40,14 +40,15 @@ class UserList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# Create your views here.
+# Create your views here
+
 def home(request):
     if (request.method == "POST"):
-        is_link_valid(request.POST['your_name'])
+        tmp_str = request.POST.get("your_name")
+        is_link_valid(tmp_str)
         return render(request, "index.html", locals())
     if (request.method == "GET"):
         return render(request, "index.html", locals())
-
 
 class UserListCreate(generics.ListCreateAPIView):
     User = get_user_model()
