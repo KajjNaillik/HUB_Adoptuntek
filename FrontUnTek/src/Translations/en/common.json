@@ -15,7 +15,9 @@
         "myMatch": "My match",
         "logout": "Logout",
         "welcome": "Welcome to AdopteUnTek !",
-        "chat": "Chat"
+        "chat": "Chat",
+        "suggestIdea": "Suggest your idea !",
+        "idea": "The ideas !"
     },
     "matched": {
         "true": "You matched"
@@ -26,7 +28,8 @@
     "login": {
         "email": "Email adress:",
         "password": "Password:",
-        "empty": "Cannot be empty."
+        "empty": "Cannot be empty.",
+        "update": "Login"
     },
     "register": {
         "email": "Email adress:",
@@ -41,7 +44,8 @@
     },
     "chat": {
         "chat": "Chat",
-        "send": "Send"
+        "send": "Send",
+        "me": "You"
     },
     "profile": {
         "name": "Name:",
@@ -50,5 +54,13 @@
         "campus": "Campus:",
         "promo": "Promo:",
         "update": "Update profile"
+    },
+    "suggIdea": {
+        "title": "Title",
+        "description": "Description",
+        "character": "(330 characters max)",
+        "update": "Send",
+        "errTitle": "The title is not available",
+        "errDescription": "The description is not available"
     }
 }

@@ -18,7 +18,7 @@ class PostFormLogin extends Component {
     handleValidation(){
       let errors = {};
       let formIsValid = true;
-      const {t} = this.props
+      const { t } = this.props
 
       if(!this.state._email){
         formIsValid = false;
@@ -95,16 +95,16 @@ class PostFormLogin extends Component {
             <div className="modal-body">
               <ul>
                 <h3>{t("login.email")}</h3>
-                <input className="modal-maturity-label modal-focus" type="text" placeholder={t("login.email")} name="_email" value={_email} onChange={this.changeHandler}/>
+                <input className="modal-maturity-label modal-focus" type="" placeholder={t("login.email")} name="_email" value={_email} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["_email"]}</span>
                 <h3>{t("login.password")}</h3>
                 <input className="modal-maturity-label modal-focus" type="password" placeholder={t("login.password")} name="password" value={password} onChange={this.changeHandler}/>
                 <span style={{color: "red"}}>{this.state.errors["password"]}</span>
               </ul>
-            </div>
-            <br/><div className="modal-space">
-              <input className="button hover" type="submit" value="Login" />
-            </div>
+            </div><br/>
+            <div className="modal-space">
+              <input className="button hover" type="submit" value={t("login.update")}/>
+            </div><br/>
           </form>
         </div>
       )

@@ -13,6 +13,7 @@ import PostFormLoginTranslate from './Components/ComponentPostLogin';
 import PostFormProfileTranslate from './Components/ComponentPostProfile';
 import PostFormRegisterTranslate from './Components/ComponentPostRegister';
 import PostFormChat from './Components/ComponentPostChat';
+import PostFormSuggIdea from './Components/CompomentPostSuggIdea';
 /* Import Translation */
 import {useTranslation} from "react-i18next";
 /* Import Ressources */
@@ -23,6 +24,8 @@ import logo from './ressources/logo_V2_anim.gif';
 
 let logged_in = localStorage.getItem('token') ? true : false;
 let check = false;
+let _lang = "en";
+let _flag = flag_en;
 
 function CheckLoggedIn()
 {
@@ -95,6 +98,10 @@ function App() {
     isShowing: isChat,
     toggle: toggleChat
   } = UseModal();
+  const {
+    isShowing: isIdea,
+    toggle: toggleIdea
+  } = UseModal();
 
   const [
     offsetY,
@@ -109,15 +116,26 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  function changeLanguage(){
+    if (_lang === "fr") {
+      _lang = "en";
+      _flag = flag_en;
+      return (i18n.changeLanguage('fr'));
+    } if (_lang === "en") {
+      _lang = "fr";
+      _flag = flag_fr;
+      return (i18n.changeLanguage('en'));
+    }
+  }
+
   const [t, i18n] = useTranslation('common');
+
   return (
     <Suspense fallback="loading">
       <div className="App">
         <header className="header">
         <button className="logo">AdopteUnTek</button>
           <div className="header-right">
-            <button className="button flag"><img style={{width: "100%"}} src={flag_fr} onClick={() => i18n.changeLanguage('fr')}></img></button>
-            <button className="button flag"><img style={{width: "100%"}} src={flag_en} onClick={() => i18n.changeLanguage('en')}></img></button>
           { check === false ? 
             <>
               {CheckLoggedIn()} 
@@ -125,13 +143,13 @@ function App() {
             : null
           }
           { logged_in === false ?
-              <>
-                <button className="button hover" onClick={toggleLoginForm}>{t("app.login")}</button>
-                <button className="button hover" onClick={toggleRegistrationForm}>{t("app.register")}</button>
-                <button className="button hover" onClick={toggleMyMatch}>{t("app.myMatch")}</button>
-                <button className="button hover" onClick={toggleSwiping}>{t("app.match")}</button>
-                <button className="button hover" onClick={toggleChat}>{t("app.chat")}</button>
-              </>
+            <>
+              <button className="button hover" onClick={toggleLoginForm}>{t("app.login")}</button>
+              <button className="button hover" onClick={toggleRegistrationForm}>{t("app.register")}</button>
+              <button className="button hover" onClick={toggleMyMatch}>{t("app.myMatch")}</button>
+              <button className="button hover" onClick={toggleSwiping}>{t("app.match")}</button>
+              <button className="button hover" onClick={toggleChat}>{t("app.chat")}</button>
+            </>
             : null }
           { logged_in === true ?
             <>
@@ -141,6 +159,7 @@ function App() {
               <button className="button hover" onClick={Logout}>{t("app.logout")}</button>
             </>
             : null }
+              <img className="flag" id={_lang} src={_flag} onClick={changeLanguage}/>
           </div>
         </header>
         {/* ------------------------------------------------------------------- */}
@@ -186,6 +205,12 @@ function App() {
           title={t("app.chat")}>
           <PostFormChat />
         </Modal>
+        <Modal
+          isShowing={isIdea}
+          hide={toggleIdea}
+          title={t("app.suggestIdea")}>
+          <PostFormSuggIdea />
+        </Modal>
         {/* ------------------------------------------------------------------- */}
         <section className="parallax">
           <img 
@@ -195,7 +220,13 @@ function App() {
             style={{ transform: `translateY(-${offsetY * 0.45}px)` }}
           />
         </section>
-        <section className="overflow bg_white">
+        {/* ------------------------------------------------------------------- */}
+        <section className="overflow bg_white"><br/>
+          <div className="prese carte">
+            <h1 style={{marginLeft: "190px"}}>{t("app.idea")}<button className="header-right button btn-idea hover" style={{marginTop: "15px", marginRight: "15px"}} onClick={toggleIdea}>{t("app.suggestIdea")}</button></h1>
+            {/* <Idea> */}
+          </div>
+        {/* ------------------------------------------------------------------- */}
           <div className="center">
             <img src={logo} />
           </div>

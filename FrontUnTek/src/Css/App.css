@@ -1,11 +1,17 @@
 .App {
   min-height: 10px;
+  color: black;
 }
 
 .header {
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
+}
+
+.header-right {
+  float: right;
+  justify-content: space-between;
 }
 
 .logo {
@@ -33,6 +39,8 @@
 .img_gif {
   position: fixed;
   width: 300px;
+  text-align: center;
+  display: block;
 }
 
 .img_swap {
@@ -40,12 +48,20 @@
 }
 
 .flag {
-  width: 50px;
-  
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: -12px;
+  top: 13px;
+  width: 30px;
+  padding: 10px;
+  outline: none;
+  position: relative;
 }
 
 .button {
   background-color: #f1f1f1;
+  margin-right: 5px;
   border: none;
   border-radius: 4px;
   text-align: center;
@@ -58,14 +74,26 @@
   outline: none;
 }
 
+.btn-idea {
+  background-color: rgb(231, 230, 230);
+  border: 2px solid;
+  border-radius: 50px;
+  border-color:darkgray;
+  display: inline-block;
+}
+
+.test {
+  background-color: rgb(231, 230, 230);
+  border-color: lightgray;
+  border: 2px solid black;
+  color: black;
+}
+
 .hover:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   background-color: dodgerblue;
   color: white;
-}
-
-.header-right {
-  float: right;
+  border: none;
 }
 
 .DropDownList {
@@ -164,4 +192,14 @@ html {
 
 .bg_white {
   background-color: white;
+}
+
+.carte {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: rgb(231, 230, 230);
+  width: 90%;
+  height: 500px;
+  margin-left: 5%;
+  border-radius: 5px;
+  text-align: center;
 }

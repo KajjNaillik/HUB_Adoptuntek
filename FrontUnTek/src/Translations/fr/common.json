@@ -15,7 +15,9 @@
         "myMatch": "Mes match",
         "logout": "Se déconnecter",
         "welcome": "Bienvenu sur AdopteUnTek !",
-        "chat": "Messagerie"
+        "chat": "Messagerie",
+        "suggestIdea": "Propose ton idée !",
+        "idea": "Les idées !"
     },
     "matched": {
         "true": "Vous avez matché"
@@ -24,9 +26,10 @@
         "empty": "Vous n'avez pas de Matche"
     },
     "login": {
-        "email": "Adresse email:",
+        "email": "Adresse mail:",
         "password": "Mot de passe:",
-        "empty": "Ne peut être vide."
+        "empty": "Ne peut être vide.",
+        "update": "Se connecter"
     },
     "register": {
         "email": "Adresse email:",
@@ -41,7 +44,8 @@
     },
     "chat": {
         "chat": "Messagerie",
-        "send": "Envoyer"
+        "send": "Envoyer",
+        "me": "Vous"
     },
     "profile": {
         "name": "Nom:",
@@ -50,5 +54,13 @@
         "campus": "Campus:",
         "promo": "Promo:",
         "update": "Modifier le profil"
+    },
+    "suggIdea": {
+        "title": "Titre",
+        "description": "Description",
+        "character": "(330 caractères max)",
+        "update": "Envoyer",
+        "errTitle": "Le titre n'est pas valide",
+        "errDescription": "La description n'est pas valide"
     }
 }

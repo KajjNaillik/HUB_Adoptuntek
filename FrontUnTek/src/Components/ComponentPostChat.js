@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 /* Import Translation */
 import {withTranslation} from "react-i18next";
+import '../Css/Modal.css';
 
 class PostFormChat extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class PostFormChat extends Component {
         this.setState({ message: "event.target.value" });
     };
     componentDidMount(){
+        const { t } = this.props;
         var chatSocket = new WebSocket(
             'ws://'
             + 'localhost:8000'
@@ -79,7 +81,7 @@ class PostFormChat extends Component {
                 'from': 'Anonymous',
                 'room_id':  this.state.roomName
             }));
-            document.querySelector('#chat-log').value += ("Me" + ": " + message + '\n');
+            document.querySelector('#chat-log').value += (t("chat.me") + ": " + message + '\n');
 
 
             chatSocket.send(JSON.stringify({
@@ -95,17 +97,21 @@ class PostFormChat extends Component {
     render() {
         const { t } = this.props;
         return (
-            <div>      
-                {this.state.messages.map(function(item, i){
-                    return <div key={i} id="message" className="card">    
-                        <div className="cell large-4">{item.text}</div>
-                        <div className="cell large-2 text-right"><small>{item.date}</small></div>
-                        </div>
-                    ;}
-                )}
-                <textarea disabled id="chat-log" type="text" cols="65" rows="20" onChange={this.messageChangeHandler} value={this.state.message}/><br/>
-                <input id="chat-message-input" type="text" size="40"/>
-                <input id="chat-message-submit" type="button" className="button" value={t("chat.send")} />
+            <div>
+                <div className="center modal-body">
+                    {this.state.messages.map(function(item, i){
+                        return <div key={i} id="message" className="card">    
+                            <div className="cell large-4">{item.text}</div>
+                            <div className="cell large-2 text-right"><small>{item.date}</small></div>
+                            </div>
+                        ;}
+                    )}
+                    <textarea className="modal-maturity-label modal-focus textarea" disabled id="chat-log" type="text" rows="20" onChange={this.messageChangeHandler} value={this.state.message}/>
+                </div>
+                <div className="modal-space">
+                    <input id="chat-message-input" type="text" className="modal-maturity-label modal-focus desc" size="40"/>
+                    <input id="chat-message-submit" type="button" className="button hover" value={t("chat.send")}/>
+                </div><br/>
             </div>
         );
     }
