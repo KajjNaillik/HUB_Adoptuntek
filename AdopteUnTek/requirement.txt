@@ -1,4 +1,5 @@
 django>=3.1.7
+requests
 psycopg2-binary>=2.8
 django-rest-framework
 djangorestframework
@@ -8,3 +9,4 @@ PyMySQL
 channels>=3.0.3
 channels_redis
 django-cors-headers
+django_microsoft_auth

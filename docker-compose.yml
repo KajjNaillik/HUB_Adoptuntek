@@ -17,18 +17,18 @@ services:
     restart: unless-stopped
     volumes:
       - ./AdopteUnTek:/code
-    links:
-      - "redis:redis"
+    # links:
+    #   - "redis:redis"
 
-  adopteuntek-front:
-    build: ./FrontUnTek
-    command: npm start
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./FrontUnTek/public:/app/public
-      - ./FrontUnTek/src:/app/src
+  # adopteuntek-front:
+  #   build: ./FrontUnTek
+  #   command: npm start
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./FrontUnTek/public:/app/public
+  #     - ./FrontUnTek/src:/app/src
 
   db:
     image: mariadb:latest
@@ -46,15 +46,15 @@ services:
     networks:
       - backend
     
-  redis:
-    restart: always
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    volumes:
-      - redisdata:/data
-    networks:
-      - "backend"
+  # redis:
+  #   restart: always
+  #   image: redis:latest
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redisdata:/data
+  #   networks:
+  #     - "backend"
     
 networks:
   backend:
