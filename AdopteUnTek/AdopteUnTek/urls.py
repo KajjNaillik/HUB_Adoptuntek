@@ -20,4 +20,5 @@ from mysite import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mysite.urls')),
+    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
 ]

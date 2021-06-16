@@ -22,13 +22,11 @@ class Match(models.Model):
     _room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
 
-class User(AbstractUser):
+class User(models.Model):
     _email = models.EmailField(verbose_name="Email", validators=[validators.validate_email], unique=True)
     _likes = models.ManyToManyField("self", verbose_name="likes")
     _match = models.ManyToManyField(Match, verbose_name="match")
     _interest = models.ManyToManyField(Interest, verbose_name="interest")
-
-    USERNAME_FIELD = '_email'
 
 
 class Message(models.Model):
